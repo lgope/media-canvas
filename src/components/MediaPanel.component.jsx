@@ -35,7 +35,7 @@ class MediaPanel extends Component {
     const { connectDragSource, image } = this.props;
 
     return connectDragSource(
-      <img className='images' src={image.img} alt={image.name} />
+      <img className='images' src={image.img} alt={image.name} title={image.name} />
     );
   }
 }

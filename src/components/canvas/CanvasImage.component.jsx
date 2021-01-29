@@ -74,7 +74,7 @@ class CanvasImage extends React.Component {
       connectDragSource(
         connectDropTarget(
           <div className='images'>
-            <img src={image.img} alt={image.name} style={IMAGE_STYLES} />
+            <img src={image.img} alt={image.name} style={IMAGE_STYLES} title={image.name} />
           </div>
         )
       )

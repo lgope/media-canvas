@@ -29,7 +29,6 @@ const Canvas = React.forwardRef(
     ref
   ) => {
     const backgroundColor = hovered ? 'lightgreen' : 'white';
-    const visibility = selectedImages.length === 12 ? 'hidden' : 'visible';
 
     return connectDropTarget(
       <div className='selected-images'>
@@ -59,31 +58,21 @@ const Canvas = React.forwardRef(
           ))}
 
         {/* image drop field */}
-        {selectedImages && selectedImages.length > 0 && (
-          <div className='drop-field' style={{ backgroundColor }}>
-            <img
-              src={imageIcon}
-              alt='greenField'
-              style={{ paddingTop: '30px', marginTop: '30px' }}
-            />
-            <p>Drop an image from Media Panel</p>
-          </div>
-        )}
-
-        {/* showing drop field in middle of the canvas when canvas is empty */}
-        {selectedImages && selectedImages.length < 1 && (
-          <div
-            className='middle-drop-field'
-            style={{ backgroundColor, visibility }}
-          >
-            <img
-              src={imageIcon}
-              alt='greenField'
-              style={{ paddingTop: '30px', marginTop: '30px' }}
-            />
-            <p>Drop an image from Media Panel</p>
-          </div>
-        )}
+        <div
+          className={
+            selectedImages && selectedImages.length > 0
+              ? 'drop-field'
+              : 'middle-drop-field'
+          }
+          style={{ backgroundColor }}
+        >
+          <img
+            src={imageIcon}
+            alt='greenField'
+            style={{ paddingTop: '30px', marginTop: '30px' }}
+          />
+          <p>Drop an image from Media Panel</p>
+        </div>
       </div>
     );
   }
@@ -97,4 +86,3 @@ export default compose(
   connect(mapStateToProps, { deleteImageFromCanvas }),
   DropTarget('image', {}, collect)
 )(Canvas);
-

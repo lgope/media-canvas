@@ -12,10 +12,10 @@ import { Provider } from 'react-redux';
 // pages
 import Home from './pages/Home.page';
 
-const App = () =>  (
-      <Provider store={store}>
-        <Home />
-      </Provider>
-    );
+const App = () => (
+  <Provider store={store}>
+    <Home />
+  </Provider>
+);
 
 export default DragDropContext(HTML5Backend)(App);
