@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import ReactDom from 'react-dom';
 
 // styles
-import './popup.styles.css'
+import './popup.styles.css';
 
 // popup detect out side click
 import Popup from './Popup.component';
@@ -12,26 +12,26 @@ import { connect } from 'react-redux';
 import { changeImage } from '../../redux/actions/imageActions';
 
 const MODAL_STYLES = {
-  position: 'fixed',
   top: '50%',
   left: '50%',
-  transform: 'translate(-50%, -50%)',
-  backgroundColor: '#FFF',
-  padding: '10px',
   height: '90%',
+  padding: '10px',
   maxWidth: '20%',
+  position: 'fixed',
   borderRadius: '5px',
+  backgroundColor: '#FFF',
+  transform: 'translate(-50%, -50%)',
   zIndex: 1000,
 };
 
 const OVERLAY_STYLES = {
-  position: 'fixed',
   top: 0,
   left: 0,
   right: 0,
   bottom: 0,
-  backgroundColor: 'rgba(0, 0, 0, .7)',
   zIndex: 1000,
+  position: 'fixed',
+  backgroundColor: 'rgba(0, 0, 0, .7)',
 };
 
 const IMAGE_LIST_STYLES = {
@@ -64,31 +64,31 @@ const ImageListPopup = props => {
       {/* popup detect outside click and close the popover */}
       <Popup onClose={handleCancel}>
         <div style={MODAL_STYLES}>
-            <p>Select an image</p>
+          <p>Select an image</p>
 
-            <div style={IMAGE_LIST_STYLES}>
-              {props.images &&
-                props.images.map(image => (
-                  <input
-                    key={image.char_id}
-                    className='popup-image'
-                    type='image'
-                    src={image.img}
-                    alt={image.name}
-                    onClick={() => setNewImage(image)}
-                  />
-                ))}
-            </div>
+          <div style={IMAGE_LIST_STYLES}>
+            {props.images &&
+              props.images.map(image => (
+                <input
+                  key={image.char_id}
+                  className='popup-image'
+                  type='image'
+                  src={image.img}
+                  alt={image.name}
+                  onClick={() => setNewImage(image)}
+                />
+              ))}
+          </div>
 
-            <div className='imagelist-popup-actionBtn'>
-              <button className='img-confirm-btn' onClick={handleConfirm}>
-                Confirm
-              </button>
-              {/* clear state and close the popup */}
-              <button className='img-cancel-btn' onClick={handleCancel}>
-                Cancel
-              </button>
-            </div>
+          <div className='imagelist-popup-actionBtn'>
+            <button className='img-confirm-btn' onClick={handleConfirm}>
+              Confirm
+            </button>
+            {/* clear state and close the popup */}
+            <button className='img-cancel-btn' onClick={handleCancel}>
+              Cancel
+            </button>
+          </div>
         </div>
       </Popup>
     </div>,
