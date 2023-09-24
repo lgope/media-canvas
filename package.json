@@ -2,6 +2,7 @@
   "name": "media-canvas",
   "version": "0.1.0",
   "private": true,
+  "homepage": "https://lgope.github.io/media-canvas",
   "dependencies": {
     "@testing-library/react": "^11.2.2",
     "enzyme": "^3.11.0",
@@ -20,7 +21,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "gh-pages": "^6.0.0"
   }
 }
