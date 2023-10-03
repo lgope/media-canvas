@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { DragSource } from 'react-dnd';
+import React from "react";
+import { DragSource } from "react-dnd";
 
 // redux stuff
-import { connect } from 'react-redux';
-import { compose } from 'redux';
-import { addImageToCanvas } from '../redux/actions/imageActions';
+import { connect } from "react-redux";
+import { compose } from "redux";
+import { addImageToCanvas } from "../redux/actions/imageActions";
 
 // drag functionality
 const imageSource = {
@@ -30,17 +30,20 @@ function collect(connect, monitor) {
   };
 }
 
-class MediaPanel extends Component {
-  render() {
-    const { connectDragSource, image } = this.props;
+const MediaPanel = (props) => {
+  const { connectDragSource, image } = props;
 
-    return connectDragSource(
-      <img className='images' src={image.img} alt={image.name} title={image.name} />
-    );
-  }
-}
+  return connectDragSource(
+    <img
+      className="images"
+      src={image.img}
+      alt={image.name}
+      title={image.name}
+    />
+  );
+};
 
 export default compose(
   connect(null, { addImageToCanvas }),
-  DragSource('image', imageSource, collect)
+  DragSource("image", imageSource, collect)
 )(MediaPanel);
